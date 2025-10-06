@@ -1,1 +1,157 @@
+/* ------------------- Global ------------------- */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    color: #0d47a1;
+}
 
+.wrapper {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* ------------------- Header ------------------- */
+header {
+    background-color: #1976d2;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+/* ------------------- Main Layout ------------------- */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.form-section, .list-section {
+    flex: 1;
+    min-width: 350px;
+    margin: 10px;
+    background: #f7f9fc;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: inset 0 0 10px rgba(25, 118, 210, 0.05);
+}
+
+h2 {
+    color: #0d47a1;
+    text-align: center;
+}
+
+/* ------------------- Form ------------------- */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #90caf9;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #1976d2;
+    box-shadow: 0 0 5px #1976d2;
+}
+
+/* ------------------- Buttons ------------------- */
+.button-group {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    margin: 5px;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.btn.add {
+    background: #43a047;
+}
+
+.btn.add:hover {
+    background: #2e7d32;
+}
+
+.btn.treat {
+    background: #f57c00;
+}
+
+.btn.treat:hover {
+    background: #ef6c00;
+}
+
+.btn.show {
+    background: #1976d2;
+}
+
+.btn.show:hover {
+    background: #0d47a1;
+}
+
+/* ------------------- Waiting List ------------------- */
+.waiting-list {
+    list-style: none;
+    padding: 0;
+}
+
+.patient-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #e3f2fd;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border-radius: 8px;
+    font-size: 15px;
+    border-left: 6px solid #1976d2;
+}
+
+/* Priority color coding */
+.priority-1 {
+    border-left-color: #d32f2f;
+}
+.priority-2 {
+    border-left-color: #fbc02d;
+}
+.priority-3 {
+    border-left-color: #388e3c;
+}
+
+/* ------------------- Footer ------------------- */
+footer {
+    background-color: #1565c0;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+}
