@@ -1,0 +1,20 @@
+# --- Core Web Framework ---
+Flask==3.0.3
+Werkzeug==3.0.2
+Jinja2==3.1.4
+itsdangerous==2.2.0
+
+# --- Database (optional, if you later add SQLite or SQLAlchemy) ---
+Flask-SQLAlchemy==3.1.1
+SQLAlchemy==2.0.34
+
+# --- Frontend & API Handling ---
+Flask-Cors==4.0.0
+requests==2.32.3
+
+# --- Deployment (for production servers like Heroku, Render, or Railway) ---
+gunicorn==22.0.0
+waitress==3.0.0
+
+# --- Development & Debugging Tools ---
+python-dotenv==1.0.1
