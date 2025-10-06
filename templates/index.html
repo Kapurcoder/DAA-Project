@@ -1,1 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital ER Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>🏥 Hospital ER Management System</h1>
+        </header>
 
+        <main>
+            <section class="form-section">
+                <h2>Add New Patient</h2>
+                <div class="form-group">
+                    <label for="name">Patient Name</label>
+                    <input type="text" id="name" placeholder="Enter patient name">
+                </div>
+
+                <div class="form-group">
+                    <label for="priority">Priority</label>
+                    <select id="priority">
+                        <option value="">Select Priority</option>
+                        <option value="1">1 - High</option>
+                        <option value="2">2 - Medium</option>
+                        <option value="3">3 - Low</option>
+                    </select>
+                </div>
+
+                <div class="button-group">
+                    <button id="addBtn" class="btn add">➕ Add Patient</button>
+                    <button id="treatBtn" class="btn treat">🩺 Treat Next</button>
+                    <button id="showBtn" class="btn show">📋 Show List</button>
+                </div>
+            </section>
+
+            <section class="list-section">
+                <h2>🧾 Waiting List</h2>
+                <ul id="waitingList" class="waiting-list">
+                    <li>No patients in waiting list.</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2025 Hospital ER System | Designed by Kapur Pardhi</p>
+        </footer>
+    </div>
+
+    <script>
+        async function showPatients() {
+            const res = await fetch('/list');
+            const data = await res.json();
+            const waitingList = document.getElementById('waitingList');
+            waitingList.innerHTML = "";
+            if (data.length === 0) {
+                waitingList.innerHTML = "<li>No patients in waiting list.</li>";
+            } else {
+                data.forEach(p => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <div class="patient-card priority-${p.priority}">
+                            <span class="patient-name">${p.name}</span>
+                            <span class="priority-label">Priority ${p.priority}</span>
+                        </div>
+                    `;
+                    waitingList.appendChild(li);
+                });
+            }
+        }
+
+        document.getElementById('addBtn').onclick = async () => {
+            const name = document.getElementById('name').value.trim();
+            const priority = parseInt(document.getElementById('priority').value);
+            const res = await fetch('/add', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, priority })
+            });
+            const data = await res.json();
+            alert(data.message || data.error);
+            showPatients();
+            document.getElementById('name').value = "";
+            document.getElementById('priority').value = "";
+        };
+
+        document.getElementById('treatBtn').onclick = async () => {
+            const res = await fetch('/treat', { method: 'POST' });
+            const data = await res.json();
+            alert(data.message);
+            showPatients();
+        };
+
+        document.getElementById('showBtn').onclick = showPatients;
+        window.onload = showPatients;
+    </script>
+</body>
+</html>
